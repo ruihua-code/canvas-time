@@ -11,7 +11,13 @@
 
 <body>
 
-    <canvas id="canvas" width="7200px" height="80px"></canvas>
+    <div class="box">
+        <canvas id="canvas" width="7200px" height="80px"></canvas>
+        <canvas id="selectArea" width="7200px" height="80px" onmousedown="onMousedown(event)"
+            onmouseup="onMouseup(event)"></canvas>
+    </div>
+
+    <button onclick="onClearRect()">清空选区</button>
 </body>
 
 <script src="/js/index.js"></script>

@@ -1,13 +1,19 @@
+let canvas = document.getElementById("canvas");
+let selectAreaCanvas = document.getElementById("selectArea");
+selectAreaCanvas.height = canvas.height * window.devicePixelRatio;
+selectAreaCanvas.width = canvas.width * window.devicePixelRatio;
+canvas.height = canvas.height * window.devicePixelRatio;
+canvas.width = canvas.width * window.devicePixelRatio;
+console.log(canvas.height, canvas.width, window.devicePixelRatio)
+let ctx = canvas.getContext("2d");
+let ctxSelect = selectAreaCanvas.getContext("2d");
 function renderTime() {
     let top = 0;
     let lineGap = 10;
     let lineShort = 50;
     let lineLong = 80;
-    let canvas = document.getElementById("canvas");
-    canvas.height = canvas.height * window.devicePixelRatio;
-    canvas.width = canvas.width * window.devicePixelRatio;
-    console.log(canvas.height, canvas.width, window.devicePixelRatio)
-    let ctx = canvas.getContext("2d");
+
+
     // 解决渲染模糊
     ctx.translate(0.5, 0.5);
 
@@ -42,3 +48,43 @@ function renderTime() {
 }
 
 renderTime()
+
+
+/**
+ * 
+ * @param {Number} x 线条x坐标值 
+ */
+function drawLine(x) {
+    ctxSelect.strokeStyle = "#fff";
+    ctxSelect.beginPath()
+    ctxSelect.moveTo(x, 0);
+    ctxSelect.lineTo(x, 200);
+    ctxSelect.stroke()
+}
+
+let rectList = [];
+let x1 = 0;
+function onMousedown(e) {
+    ctxSelect.fillStyle = "rgba(255,255,0,0.5)"
+    x1 = e.offsetX;
+    ctxSelect.beginPath()
+}
+
+function onMouseup(e) {
+    ctxSelect.clearRect(x1, 0, e.offsetX - x1, 200);
+    ctxSelect.rect(x1, 0, e.offsetX - x1, 200);
+    ctxSelect.closePath();
+    ctxSelect.fill();
+    rectList.push([x1, e.offsetX - x1])
+
+}
+
+function onMousemove(e) {
+    console.log("move")
+}
+
+
+function onClearRect() {
+    console.log(canvas.width, canvas.height)
+    ctxSelect.clearRect(0, 0, canvas.width, canvas.height)
+}

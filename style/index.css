@@ -1,3 +1,20 @@
-#canvas{
+.box {
+    border: 1px solid;
+    width: 1000px;
+    height: 160px;
+    overflow-y: auto;
+    margin: 0 auto;
+    position: relative;
+}
+
+#canvas {
     background-color: #000;
+}
+
+#selectArea {
+    background-color: rgba(255, 255, 255, 0);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99;
 }
