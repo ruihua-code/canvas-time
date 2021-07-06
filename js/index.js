@@ -88,3 +88,24 @@ function onClearRect() {
     console.log(canvas.width, canvas.height)
     ctxSelect.clearRect(0, 0, canvas.width, canvas.height)
 }
+
+
+let regionMouseFlag = false
+
+function onRegionMousedown(e) {
+    console.log(e)
+    regionMouseFlag = true
+}
+
+let zrh = document.getElementById("zrh")
+function onRegionMousemove(e) {
+    if (regionMouseFlag === true) {
+        console.log(e.offsetX, zrh.style.width)
+        zrh.style.left = e.offsetX + "px"
+    }
+}
+
+function onRegionMouseup(e) {
+    console.log("up")
+    regionMouseFlag = false
+}

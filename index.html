@@ -17,6 +17,16 @@
             onmouseup="onMouseup(event)"></canvas>
     </div>
 
+    <div class="div-box">
+        <zrh id="zrh" class="zrh" onmousedown="onRegionMousedown(event)" onmousemove="onRegionMousemove(event)"
+            onmouseup="onRegionMouseup(event)" onmouseover="onRegionMouseup(event)">
+            <span>zhangruihua</span>
+            <handle class="handle handle-left"></handle>
+            <handle class="handle handle-right"></handle>
+        </zrh>
+    </div>
+
+
     <button onclick="onClearRect()">清空选区</button>
 </body>
 
